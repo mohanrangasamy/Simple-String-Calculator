@@ -48,4 +48,10 @@ class TestAddMethod < Minitest::Test
   def test_add_with_mixed_delimiters
     assert_equal 10, SimpleStringCalculator.add("1,2\n3,4")
   end
+
+  def test_add_with_multiple_custom_delimiters
+    assert_equal 3, SimpleStringCalculator.add("//;\n1;2")  # Custom delimiters: ";" and "|"
+    assert_equal 6, SimpleStringCalculator.add("//|\n1|2|3")  # Custom delimiters: "|" and "&"
+    assert_equal "Negative numbers allowed -1", SimpleStringCalculator.add("//;\n-1;2;3")  # Custom delimiters: "|" and "&"
+  end
 end
