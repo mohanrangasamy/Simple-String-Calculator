@@ -3,7 +3,8 @@ class SimpleStringCalculator
     return "Invalid value" unless number_string.is_a?(String)
     return 0 if number_string.empty?
 
-    parsed_numbers = number_string.split(',').map(&:to_i)
+    # Split the string on commas and newlines
+    parsed_numbers = number_string.split(/,|\n/).map(&:to_i)
 
     # Find negative numbers
     negative_numbers = parsed_numbers.select { |num| num < 0 }
